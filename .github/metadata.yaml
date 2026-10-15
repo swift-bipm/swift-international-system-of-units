@@ -1,0 +1,10 @@
+description: "The International System of Units, BIPM SI Brochure, ninth edition. Exact definitions, dimensional algebra, and normative unit expressions for Swift."
+topics:
+  - swift
+  - standards
+  - bipm
+  - si
+  - metrology
+homepage: "https://swift-institute.org"
+readme:
+  family: E
