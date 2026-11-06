@@ -1,4 +1,4 @@
-public import Rational
+import Rational
 
 extension SI.Brochure.Unit {
     public var conversion: SI.Conversion {

@@ -80,7 +80,7 @@ extension SI.Unit {
                 let exponent: Rational
                 do { exponent = try Rational(numerator: numerator, denominator: denominator) }
                 catch { throw .exponent }
-                result = try result.power(negative ? -exponent : exponent)
+                result = result.power(negative ? -exponent : exponent)
             } else {
                 let digits: [Character: Character] = ["⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9", "⁻": "-"]
                 var exponent = ""
@@ -90,7 +90,7 @@ extension SI.Unit {
                 }
                 if !exponent.isEmpty {
                     guard let power = Integer(exponent) else { throw .syntax }
-                    result = try result.power(Rational(power))
+                    result = result.power(Rational(power))
                 }
             }
             return result

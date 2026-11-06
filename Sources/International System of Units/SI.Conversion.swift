@@ -35,14 +35,14 @@ extension SI {
         }
         internal func multiplied(by other: Self) throws(SI.Error) -> Self {
             do {
-                let exponent = try piExponent.adding(other.piExponent)
+                let exponent = piExponent.adding(other.piExponent)
                 guard exponent.denominator.exactly(Int.self) != nil else { throw SI.Error.exponent }
                 return Self(factor: try factor.multiplied(by: other.factor), piExponent: exponent)
             } catch { throw .exponent }
         }
         internal func raised(to power: Rational) throws(SI.Error) -> Self {
             do {
-                let exponent = try piExponent.multiplied(by: power)
+                let exponent = piExponent.multiplied(by: power)
                 guard exponent.denominator.exactly(Int.self) != nil else { throw SI.Error.exponent }
                 return Self(factor: try factor.raised(to: power), piExponent: exponent)
             } catch { throw .exponent }

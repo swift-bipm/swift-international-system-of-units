@@ -1,4 +1,4 @@
-public import Rational
+import Rational
 
 extension SI.Unit {
     public func conversion(to other: Self) throws(SI.Error) -> SI.Conversion {

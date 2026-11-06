@@ -33,22 +33,18 @@ extension SI.Unit {
 }
 
 extension SI.Unit {
-    public func multiplied(by other: Self) throws(SI.Error) -> Self {
+    public func multiplied(by other: Self) -> Self {
         var factors = self.factors
-        do {
-            for (factor, exponent) in other.factors {
-                factors[factor] = try factors[factor, default: 0].adding(exponent)
-            }
-        } catch { throw .exponent }
+        for (factor, exponent) in other.factors {
+            factors[factor] = factors[factor, default: 0].adding(exponent)
+        }
         return Self(factors: factors)
     }
-    public func power(_ exponent: Rational) throws(SI.Error) -> Self {
+    public func power(_ exponent: Rational) -> Self {
         var factors: [Factor: Rational] = [:]
-        do {
-            for (factor, power) in self.factors {
-                factors[factor] = try power.multiplied(by: exponent)
-            }
-        } catch { throw .exponent }
+        for (factor, power) in self.factors {
+            factors[factor] = power.multiplied(by: exponent)
+        }
         return Self(factors: factors)
     }
     public static func *= (lhs: inout Self, rhs: Self) { lhs = lhs * rhs }
