@@ -25,6 +25,8 @@ extension SI {
             var result = 1.0
             while count != 0 {
                 if count.isOdd { result *= base }
+                // Cannot throw: the divisor is 2.
+                // swift-format-ignore: NeverUseForceTry
                 count = try! count.quotientAndRemainder(dividingBy: 2).quotient
                 if count != 0 { base *= base }
             }

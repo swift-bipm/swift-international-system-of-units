@@ -8,14 +8,14 @@ let package = Package(
     products: [.library(name: "International System of Units", targets: ["International System of Units"])],
     dependencies: [
         .package(url: "https://github.com/swift-atoms/swift-rational.git", branch: "main"),
-        .package(url: "https://github.com/swift-atoms/swift-radical.git", branch: "main")
+        .package(url: "https://github.com/swift-atoms/swift-radical.git", branch: "main"),
     ],
     targets: [
         .target(
             name: "International System of Units",
             dependencies: [
                 .product(name: "Radical", package: "swift-radical"),
-                .product(name: "Rational", package: "swift-rational")
+                .product(name: "Rational", package: "swift-rational"),
             ]
         ),
         .testTarget(

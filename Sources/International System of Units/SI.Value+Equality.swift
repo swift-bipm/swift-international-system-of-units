@@ -4,12 +4,12 @@ extension SI.Value {
     public static func == (lhs: Self, rhs: Self) -> Bool {
         guard lhs.quantity == rhs.quantity else { return false }
         do {
-        let left = try lhs.unit.reduction()
-        let right = try rhs.unit.reduction()
-        let leftValue = left.factor.scaled(by: lhs.numericalValue)
-        let rightValue = right.factor.scaled(by: rhs.numericalValue)
-        if leftValue.rational == .zero && rightValue.rational == .zero { return true }
-        return leftValue == rightValue && left.piExponent == right.piExponent
+            let left = try lhs.unit.reduction()
+            let right = try rhs.unit.reduction()
+            let leftValue = left.factor.scaled(by: lhs.numericalValue)
+            let rightValue = right.factor.scaled(by: rhs.numericalValue)
+            if leftValue.rational == .zero && rightValue.rational == .zero { return true }
+            return leftValue == rightValue && left.piExponent == right.piExponent
         } catch {
             return lhs.unit == rhs.unit && lhs.numericalValue == rhs.numericalValue
         }

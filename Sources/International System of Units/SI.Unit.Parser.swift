@@ -78,8 +78,7 @@ extension SI.Unit {
                     index += 1
                 }
                 let exponent: Rational
-                do { exponent = try Rational(numerator: numerator, denominator: denominator) }
-                catch { throw .exponent }
+                do { exponent = try Rational(numerator: numerator, denominator: denominator) } catch { throw .exponent }
                 result = result.power(negative ? -exponent : exponent)
             } else {
                 let digits: [Character: Character] = ["⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9", "⁻": "-"]
@@ -110,12 +109,10 @@ extension SI.Unit {
                 guard token.hasPrefix(prefix.symbol) else { continue }
                 let symbol = String(token.dropFirst(prefix.symbol.count))
                 if scope != .brochure, named == nil, let unit = SI.Unit.Name.allCases.first(where: { $0.symbol == symbol }) {
-                    do { candidates.insert(try unit.prefixed(prefix)) }
-                    catch { if error != .prefix { throw error } }
+                    do { candidates.insert(try unit.prefixed(prefix)) } catch { if error != .prefix { throw error } }
                 }
                 if scope != .si, brochure == nil, let unit = SI.Brochure.Unit.allCases.first(where: { $0.symbols.contains(symbol) }) {
-                    do { candidates.insert(try unit.expression.spelled(symbol).prefixed(prefix)) }
-                    catch { if error != .prefix { throw error } }
+                    do { candidates.insert(try unit.expression.spelled(symbol).prefixed(prefix)) } catch { if error != .prefix { throw error } }
                 }
             }
             guard candidates.count <= 1 else { throw .ambiguous }

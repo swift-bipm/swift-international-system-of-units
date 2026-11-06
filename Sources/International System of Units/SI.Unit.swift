@@ -19,8 +19,7 @@ extension SI {
         }
         public var isCoherent: Bool {
             guard isSI, !contains(.degreeCelsius) else { return false }
-            do { return try conversion(to: coherent).factor.rational == .one }
-            catch { return false }
+            do { return try conversion(to: coherent).factor.rational == .one } catch { return false }
         }
         public var coherent: Self {
             var result = Self.one

@@ -54,7 +54,7 @@ import Testing
         #expect(throws: SI.Error.syntax) { try SI.Notation.decimal("1,234.5") }
     }
     @Test func `unit exponents preserve arbitrary precision`() throws {
-        let power: Rational = 999999999999999999999999999999999999999999999999999
+        let power: Rational = 999_999_999_999_999_999_999_999_999_999_999_999_999_999_999_999_999
         let unit = SI.Unit.Name.metre.expression.raised(to: power)
         #expect(try SI.Unit(symbol: "m^" + power.description) == unit)
         #expect(try SI.Unit(symbol: #require(unit.symbol)) == unit)
