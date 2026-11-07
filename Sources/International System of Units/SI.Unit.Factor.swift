@@ -9,10 +9,14 @@ extension SI.Unit {
             self.prefix = prefix
             self.spelling = spelling
         }
-        public var symbol: String? {
-            guard let symbol = spelling ?? reference.symbols.first else { return nil }
-            return (prefix?.symbol ?? "") + symbol
-        }
-        public var name: String { (prefix?.name ?? "") + reference.name }
     }
+}
+
+extension SI.Unit.Factor {
+    public var symbol: String? {
+        guard let symbol = spelling ?? reference.symbols.first else { return nil }
+        return (prefix?.symbol ?? "") + symbol
+    }
+
+    public var name: String { (prefix?.name ?? "") + reference.name }
 }
