@@ -7,6 +7,7 @@ let package = Package(
     platforms: [.macOS(.v27), .iOS(.v27), .tvOS(.v27), .watchOS(.v27), .visionOS(.v27)],
     products: [.library(name: "International System of Units", targets: ["International System of Units"])],
     dependencies: [
+        .package(url: "https://github.com/swift-bipm/swift-bipm.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-rational.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-radical.git", branch: "main"),
     ],
@@ -14,6 +15,7 @@ let package = Package(
         .target(
             name: "International System of Units",
             dependencies: [
+                .product(name: "BIPM", package: "swift-bipm"),
                 .product(name: "Radical", package: "swift-radical"),
                 .product(name: "Rational", package: "swift-rational"),
             ]
